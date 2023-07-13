@@ -77,5 +77,5 @@ print("R2 score =", round(sm.r2_score(y_test, y_test_pred), 2)) # Điểm R2
 
 # poly_linear_model = linear_model.LinearRegression()
 # poly_linear_model.fit(X_train_transformed, y_train)
-# print("\nLinear regression:\n", reg_linear_mul.predict(datapoint))
+# print("\nLinear regression:\n", reg_linear_mul.predict(datapoint)) # Em cần hỗ trợ chỗ này ạ!
 # print("\nPolynomial regression:\n", poly_linear_model.predict(poly_datapoint))
