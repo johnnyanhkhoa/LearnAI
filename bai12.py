@@ -60,38 +60,38 @@
 #     print('\nInput Data:', sent, '\nCategory:', category_map[category])
 
 
-'''Gender Finder'''
-import random
+# '''Gender Finder'''
+# import random
 
-from nltk import NaiveBayesClassifier
-from nltk.classify import accuracy as nltk_accuracy
-from nltk.corpus import names
+# from nltk import NaiveBayesClassifier
+# from nltk.classify import accuracy as nltk_accuracy
+# from nltk.corpus import names
 
-# Tạo hàm nhận 1 từ và tham số N=2. Dùng để lấy N ký tự cuối cùng và trả về từ điển dạng feature': last_n_letters
-def extract_features(word, N=2):
-    last_n_letters = word[-N:]
-    return {'feature': last_n_letters.lower()}
+# # Tạo hàm nhận 1 từ và tham số N=2. Dùng để lấy N ký tự cuối cùng và trả về từ điển dạng feature': last_n_letters
+# def extract_features(word, N=2):
+#     last_n_letters = word[-N:]
+#     return {'feature': last_n_letters.lower()}
 
-if __name__ == '__main__':
-    male_list = [(name, 'male') for name in names.words('male.txt')] # Tạo danh sách các cặp (tên, 'male') từ danh sách tên người đàn ông trong tài nguyên names.words('male.txt') 
-    female_list = [(name, 'female') for name in names.words('female.txt')] # Tương tự male
-    data = male_list + female_list # Tạo list data gồm male và female
+# if __name__ == '__main__':
+#     male_list = [(name, 'male') for name in names.words('male.txt')] # Tạo danh sách các cặp (tên, 'male') từ danh sách tên người đàn ông trong tài nguyên names.words('male.txt') 
+#     female_list = [(name, 'female') for name in names.words('female.txt')] # Tương tự male
+#     data = male_list + female_list # Tạo list data gồm male và female
 
-    random.seed(5) # Gen ngẫu nhiên seed để đảm bảo random result có thể regen
-    random.shuffle(data) # Xáo trộn data để đảm bảo random
+#     random.seed(5) # Gen ngẫu nhiên seed để đảm bảo random result có thể regen
+#     random.shuffle(data) # Xáo trộn data để đảm bảo random
 
-    namesInput = ['Rajesh', 'Gaurav', 'Swati', 'Shubha']
+#     namesInput = ['Rajesh', 'Gaurav', 'Swati', 'Shubha']
 
-    train_sample = int(0.8 * len(data)) # Lấy 80% để train
+#     train_sample = int(0.8 * len(data)) # Lấy 80% để train
 
-    for i in range(1, 6):
-        print('\nNumber of end letters:', i)
-        features = [(extract_features(n, i), gender) for (n, gender) in data] # Tạo list features bằng cách lấy từ tên và gán gender cho từng tên trong data
-        train_data, test_data = features[:train_sample], features[train_sample:] # Tách data thành tập train và tập test dựa trên train_sample
-        classifier = NaiveBayesClassifier.train(train_data) # Train
+#     for i in range(1, 6):
+#         print('\nNumber of end letters:', i)
+#         features = [(extract_features(n, i), gender) for (n, gender) in data] # Tạo list features bằng cách lấy từ tên và gán gender cho từng tên trong data
+#         train_data, test_data = features[:train_sample], features[train_sample:] # Tách data thành tập train và tập test dựa trên train_sample
+#         classifier = NaiveBayesClassifier.train(train_data) # Train
 
-        accuracy_classifier = round(100 * nltk_accuracy(classifier, test_data), 2) # Tính độ chính xác của mô hình trên tập test và lưu vào accuracy_classifier
-        print('Accuracy = ' + str(accuracy_classifier) + '%')
+#         accuracy_classifier = round(100 * nltk_accuracy(classifier, test_data), 2) # Tính độ chính xác của mô hình trên tập test và lưu vào accuracy_classifier
+#         print('Accuracy = ' + str(accuracy_classifier) + '%')
 
-        for name in namesInput:
-            print(name, '==>', classifier.classify(extract_features(name, i))) # Dự đoán gender dựa trên mô hình đã trained
+#         for name in namesInput:
+#             print(name, '==>', classifier.classify(extract_features(name, i))) # Dự đoán gender dựa trên mô hình đã trained

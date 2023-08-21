@@ -63,7 +63,7 @@ from sklearn.neighbors import KNeighborsClassifier
 import matplotlib.pyplot as plt
 import numpy as np
 
-def Image_display(i): # Tạo hàm  để hiển thị figure của 1 số bất kỳ từ tập data
+def Image_display(i): # Tạo hàm để hiển thị figure của 1 số bất kỳ từ tập data
    plt.imshow(digit['images'][i],cmap = 'Greys_r')
    plt.show()
    
