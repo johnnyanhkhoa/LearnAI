@@ -37,3 +37,7 @@ if __name__ == '__main__':
     df['Column3']['1980':'1990'].plot()
     plt.title('Column 3 (1980-1990)')
     plt.show()
+    
+    # Tính trung bình của Column 3
+    column3_mean = df['Column3'].mean()
+    print('Trung bình của Column 3:', column3_mean)
