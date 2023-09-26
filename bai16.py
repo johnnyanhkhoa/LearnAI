@@ -63,22 +63,22 @@
 # plt.show()
 
 
-# '''Nhận biết các từ đã nói'''
-# import speech_recognition as sr
+'''Nhận biết các từ đã nói'''
+import speech_recognition as sr
 
-# # Tạo một đối tượng Recognizer để quản lý việc ghi âm và nhận dạng giọng nói
-# recording = sr.Recognizer()
+# Tạo một đối tượng Recognizer để quản lý việc ghi âm và nhận dạng giọng nói
+recording = sr.Recognizer()
 
-# # Mở microphone và điều chỉnh cho nhiễu xung quanh
-# with sr.Microphone() as source:
-#     recording.adjust_for_ambient_noise(source)
-#     print("Please Say something:")
-#     audio = recording.listen(source)
+# Mở microphone và điều chỉnh cho nhiễu xung quanh
+with sr.Microphone() as source:
+    recording.adjust_for_ambient_noise(source)
+    print("Please Say something:")
+    audio = recording.listen(source)
 
-# try:
-#     # Sử dụng Google Speech Recognition để nhận dạng văn bản từ âm thanh ghi âm
-#     recognized_text = recording.recognize_google(audio)
-#     print("You said: \n" + recognized_text)
-# except Exception as e:
-#     print(e)
+try:
+    # Sử dụng Google Speech Recognition để nhận dạng văn bản từ âm thanh ghi âm
+    recognized_text = recording.recognize_google(audio)
+    print("You said: \n" + recognized_text)
+except Exception as e:
+    print(e)
 
