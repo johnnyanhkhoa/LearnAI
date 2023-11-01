@@ -20,7 +20,7 @@ def CallChatbot():
             print(e)
             
         # Thay thế 'your_api_key' bằng API Key của bạn
-        api_key = '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'
+        api_key = 'api_key'
 
         # Khởi tạo phiên làm việc với API
         openai.api_key = api_key
